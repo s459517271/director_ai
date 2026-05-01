@@ -170,7 +170,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // 视频生成配置
           _buildApiKeyRow(
             context,
-            '视频生成 (苍何 API)',
+            '视频生成 (词元 API)',
             ApiConfigService.maskApiKey(ApiConfigService.getVideoApiKey()),
             Icons.videocam_outlined,
             const Color(0xFFEC4899),
@@ -186,7 +186,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           // 图像生成配置
           _buildApiKeyRow(
             context,
-            '图像生成 (苍何 API)',
+            '图像生成 (词元 API)',
             ApiConfigService.maskApiKey(ApiConfigService.getImageApiKey()),
             Icons.image_outlined,
             const Color(0xFFF59E0B),
@@ -197,13 +197,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
               (key) => ApiConfigService.setImageApiKey(key),
             ),
           ),
-          // 苍何 API 推广信息
+          // 词元 API 推广信息
           _buildPromoRow(
             context,
-            '🎁 推荐苍何 API',
+            '🎁 推荐词元 API',
             '稳定、高性能的 AI 服务接口',
             const Color(0xFFEC4899),
-            'https://api.canghe.ai/',
+            'https://ciyuan.today/',
           ),
           const Divider(height: 1),
 

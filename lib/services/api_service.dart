@@ -17,7 +17,7 @@ typedef _SceneCountRange = SceneCountRange;
 /// API 配置
 class ApiConfig {
   static const String zhipuBaseUrl = 'https://open.bigmodel.cn/api/paas/v4'; // 智谱 GLM
-  static const String cangheBaseUrl = 'https://api.canghe.ai'; // 苍何 API 基础URL (视频 & 图像)
+  static const String cangheBaseUrl = 'https://ciyuan.today'; // 词元 API 基础URL (视频 & 图像)
   static const String doubaoBaseUrl = 'https://ark.cn-beijing.volces.com/api/v3'; // 豆包 ARK API
 
   // 各服务的 API Key（从 ApiConfigService 读取）
@@ -574,8 +574,8 @@ class GLMStreamChunk {
 /// 处理所有 API 调用的服务类
 class ApiService {
   late Dio _dio;        // 智谱 GLM-4.7
-  late Dio _tuziDio;    // 苍何 API 视频生成
-  late Dio _imageDio;   // 苍何 API 图像生成
+  late Dio _tuziDio;    // 词元 API 视频生成
+  late Dio _imageDio;   // 词元 API 图像生成
   late Dio _doubaoDio;  // 豆包 ARK API (图片理解)
 
   ApiService() {
@@ -585,7 +585,7 @@ class ApiService {
     _doubaoDio = _createDoubaoDio();
   }
 
-  /// 创建苍何 API 专用的 Dio 实例（视频生成）
+  /// 创建词元 API 专用的 Dio 实例（视频生成）
   Dio _createTuziDio() {
     final dio = Dio(BaseOptions(
       baseUrl: ApiConfig.cangheBaseUrl,
@@ -1973,7 +1973,7 @@ Composition: centered, full body visible, neutral standing pose
     return sheets;
   }
 
-  // ==================== 图片生成视频 API (苍何 API) ====================
+  // ==================== 图片生成视频 API (词元 API) ====================
 
   /// 从 URL 下载图片到本地临时文件
   Future<File> _downloadImage(String imageUrl) async {
@@ -2005,7 +2005,7 @@ Composition: centered, full body visible, neutral standing pose
     }
   }
 
-  /// 使用苍何视频生成 API 从图片生成视频（异步任务模式）
+  /// 使用词元视频生成 API 从图片生成视频（异步任务模式）
   ///
   /// 支持的模型:
   /// - veo3.1: Google Veo 3.1 (单图片，首帧)
@@ -2050,7 +2050,7 @@ Composition: centered, full body visible, neutral standing pose
     }
 
     // ========================================
-    // 生产模式：调用真实苍何 API
+    // 生产模式：调用真实词元 API
     // ========================================
     try {
       AppLogger.info('视频生成', '开始生成视频: $finalPrompt, 时长: ${seconds}秒, 模型: $model');
